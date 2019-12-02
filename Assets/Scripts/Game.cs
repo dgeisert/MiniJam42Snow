@@ -44,15 +44,11 @@ public class Game : MonoBehaviour
     {
         if (active)
         {
-            if (Controls.Next)
-            {
-                Next();
-            }
             if (Controls.Pause)
             {
                 Pause();
             }
-            Score += Time.deltaTime * Random.value * 100;
+            Score += Time.deltaTime;
         }
     }
 
@@ -73,5 +69,11 @@ public class Game : MonoBehaviour
                 pauseMenu.gameObject.SetActive(false);
             }
         }
+    }
+    public void EndGame(bool victory = false)
+    {
+        inGameUI.EndGame(victory);
+        scoreScreen.EndGame(victory);
+        pauseMenu.gameObject.SetActive(false);
     }
 }

@@ -41,28 +41,15 @@ public class SceneChanger : MonoBehaviour
     }
     IEnumerator DoLoadIn()
     {
-        while (blackout.color.a > 0)
-        {
-            Color c = blackout.color;
-            c.a -= 0.02f;
-            blackout.color = c;
-            yield return null;
-        }
+        yield return null;
         blackout.gameObject.SetActive(false);
         isLoading = false;
     }
     IEnumerator DoLoadScene(Scenes scene)
     {
-        Debug.Log(scene);
         blackout.gameObject.SetActive(true);
         float startTime = Time.time;
-        while (blackout.color.a < 1)
-        {
-            Color c = blackout.color;
-            c.a += 0.02f;
-            blackout.color = c;
-            yield return null;
-        }
+        yield return null;
         UnityEngine.SceneManagement.SceneManager.LoadScene((int) scene);
     }
 

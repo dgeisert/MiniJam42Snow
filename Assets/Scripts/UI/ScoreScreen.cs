@@ -13,7 +13,7 @@ public class ScoreScreen : MonoBehaviour
         gameObject.SetActive(true);
         victoryDisplay.gameObject.SetActive(victory);
         defeatDisplay.gameObject.SetActive(!victory);
-        scoreText.text = Game.Score.ToString("#,#");
+        scoreText.text = Mathf.FloorToInt(Game.Score / 60) + ": " + ((Mathf.FloorToInt(Game.Score % 60) < 10) ? "0" : "") + Mathf.FloorToInt(Game.Score % 60);
     }
 
     public void Restart()
